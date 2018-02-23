@@ -14,3 +14,5 @@ class FirstscrapyItem(scrapy.Item):
     title = scrapy.Field()
     review_title = scrapy.Field()
     review = scrapy.Field()
+    date = scrapy.Field()
+    text = scrapy.Field()
