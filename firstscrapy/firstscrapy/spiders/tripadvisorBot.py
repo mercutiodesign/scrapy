@@ -8,7 +8,7 @@ from firstscrapy.items import FirstscrapyItem
 
 class TripadvisorbotSpider(scrapy.Spider):
     name = 'tripadvisorBot'
-    allowed_domains = ['www.tripadvisor.de/Restaurants-g187323-Berlin.html']
+    allowed_domains = ['tripadvisor.de']
     start_urls = []
 
     def pages():
