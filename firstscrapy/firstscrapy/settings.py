@@ -21,7 +21,7 @@ NEWSPIDER_MODULE = 'firstscrapy.spiders'
 FEED_FORMAT = "csv"
 
 #FEED_URI : The location of the exported file.
-FEED_URL = "/Users/sitanzewde/Desktop/CODE/Trivago/scrapy/firstscrapy/tripRestaurants.csv"
+FEED_URI = "tripRestaurants.csv"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'firstscrapy (+http://www.yourdomain.com)'
