@@ -9,26 +9,10 @@ from firstscrapy.items import FirstscrapyItem
 class TripadvisorbotSpider(scrapy.Spider):
     name = 'tripadvisorBot'
     allowed_domains = ['tripadvisor.de']
-    start_urls = []
-
-    def pages():
-        lastpage = 237
-        num = 0
-        i = 0
-        pages_rest = []
-
-        #changing the page number in url
-        while i < lastpage :
-            restaurantPages = str("https://www.tripadvisor.de/RestaurantSearch?Action=PAGE&geo=187323&ajax=1&itags=10591&sortOrder=popularity&o=a" + str(num) + "&availSearchEnabled=false")
-            #incresing number by 30
-            num += 30
-            #update the list of urls with new number in urls
-            pages_rest.append(restaurantPages)
-            i += 1
-        return pages_rest
-
-    #store new urls in start_urls list
-    start_urls = pages()
+    start_urls = [
+        "https://www.tripadvisor.de/RestaurantSearch?Action=PAGE&geo=187323&ajax=1&itags=10591&sortOrder=popularity&o=a" + str(i * 30) + "&availSearchEnabled=false"
+        for i in range(237)
+    ]
 
 
     def parse(self, response):
