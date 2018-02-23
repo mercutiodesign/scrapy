@@ -14,21 +14,18 @@ class TripadvisorbotSpider(scrapy.Spider):
         for i in range(237)
     ]
 
-
     def parse(self, response):
         for href in response.xpath('//div[@class="title"]/a/@href'):
             url = response.urljoin(href.extract())
             yield response.follow(url, callback=self.parse_reviews)
 
 
-
     def parse_reviews(self, response):
         for sel in response.xpath('//div[@class="wrap"]'):
             item = FirstscrapyItem()
-
-            item['title'] = sel.xpath('//span[@class="noQuotes"]/text()').extract()
-            item['date'] = sel.xpath('//span[@class="ratingDate"]/text()').extract()
-            item['text'] = sel.xpath('//p[@class="partial_entry"]').extract()
+            item['title'] = ' '.join(sel.xpath('.//span[@class="noQuotes"]/text()').extract())
+            item['date'] = ' '.join(sel.xpath('.//span[contains(@class, "ratingDate")]/@title').extract())
+            item['text'] = ' '.join(sel.xpath('.//p[@class="partial_entry"]/text()').extract())
             yield item
 
 '''
