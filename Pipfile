@@ -7,8 +7,10 @@ name = "pypi"
 
 [packages]
 
-Scrapy = "*"
+scrapy = "*"
 pylint = "*"
+pyexcel = "*"
+pyexcel-xlsx = "*"
 
 
 [dev-packages]
