@@ -22,11 +22,11 @@ class TripadvisorbotSpider(scrapy.Spider):
 
     def parse_reviews(self, response):
         for sel in response.xpath('//div[@class="wrap"]'):
-            item = FirstscrapyItem()
-            item['title'] = ' '.join(sel.xpath('.//span[@class="noQuotes"]/text()').extract())
-            item['date'] = ' '.join(sel.xpath('.//span[contains(@class, "ratingDate")]/@title').extract())
-            item['text'] = ' '.join(sel.xpath('.//p[@class="partial_entry"]/text()').extract())
-            yield item
+            yield FirstscrapyItem(
+                title=' '.join(sel.xpath('.//span[@class="noQuotes"]/text()').extract()),
+                date=' '.join(sel.xpath('.//span[contains(@class, "ratingDate")]/@title').extract()),
+                text=' '.join(sel.xpath('.//p[@class="partial_entry"]/text()').extract())
+            )
 
 '''
     def parse(self,response):
