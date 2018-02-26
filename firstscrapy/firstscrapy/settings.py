@@ -18,10 +18,10 @@ NEWSPIDER_MODULE = 'firstscrapy.spiders'
 
 #FEED_FORMAT : The format in which you want the data to be exported.
 #Supported formats are: JSON, JSON lines, XML and CSV.
-FEED_FORMAT = "csv"
+FEED_FORMAT = "JSON"
 
 #FEED_URI : The location of the exported file.
-FEED_URI = "tripRestaurants.csv"
+FEED_URI = "tripRestaurants.json"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'firstscrapy (+http://www.yourdomain.com)'

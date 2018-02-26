@@ -7,10 +7,14 @@
 
 import scrapy
 
+class RestaurantItem(scrapy.Item):
+    name = scrapy.Field()
+    url = scrapy.Field()
 
-class FirstscrapyItem(scrapy.Item):
+class ReviewItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     title = scrapy.Field()
     date = scrapy.Field()
     text = scrapy.Field()
+    restaurant_id = scrapy.Field()

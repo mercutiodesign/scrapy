@@ -3,7 +3,7 @@ import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 #from scrapy import Request
 from scrapy.linkextractors import LinkExtractor
-from firstscrapy.items import FirstscrapyItem
+from firstscrapy.items import RestaurantItem, ReviewItem
 
 
 class TripadvisorbotSpider(scrapy.Spider):
@@ -11,7 +11,7 @@ class TripadvisorbotSpider(scrapy.Spider):
     allowed_domains = ['tripadvisor.de']
     start_urls = [
         "https://www.tripadvisor.de/RestaurantSearch?Action=PAGE&geo=187323&ajax=1&itags=10591&sortOrder=popularity&o=a" + str(i * 30) + "&availSearchEnabled=false"
-        for i in range(237)
+        for i in range(2)
     ]
 
     def parse(self, response):
@@ -21,11 +21,16 @@ class TripadvisorbotSpider(scrapy.Spider):
 
 
     def parse_reviews(self, response):
+        yield RestaurantItem(
+            name=response.xpath('//*[@id="HEADING"]/text()').extract_first(),
+            url=response.url
+        )
+
         for sel in response.xpath('//div[@class="wrap"]'):
-            yield FirstscrapyItem(
-                title=' '.join(sel.xpath('.//span[@class="noQuotes"]/text()').extract()),
-                date=' '.join(sel.xpath('.//span[contains(@class, "ratingDate")]/@title').extract()),
-                text=' '.join(sel.xpath('.//p[@class="partial_entry"]/text()').extract())
+            yield ReviewItem(
+                title=sel.xpath('.//span[@class="noQuotes"]/text()').extract_first(),
+                date=sel.xpath('.//span[contains(@class, "ratingDate")]/@title').extract_first(),
+                text=sel.xpath('.//p[@class="partial_entry"]/text()').extract_first()
             )
 
 '''
