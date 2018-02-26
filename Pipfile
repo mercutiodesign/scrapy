@@ -15,6 +15,7 @@ pyexcel-xlsx = "*"
 [dev-packages]
 
 pylint = "*"
+ipython = "*"
 
 
 [requires]
