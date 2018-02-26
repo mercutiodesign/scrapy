@@ -8,13 +8,13 @@ name = "pypi"
 [packages]
 
 scrapy = "*"
-pylint = "*"
 pyexcel = "*"
 pyexcel-xlsx = "*"
 
 
 [dev-packages]
 
+pylint = "*"
 
 
 [requires]
